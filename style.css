@@ -14,7 +14,7 @@ body {
   background-color: hotpink;
 }
 
-.title {
+.title, h1{
   font-size: 30px;
   text-align: center;
 }

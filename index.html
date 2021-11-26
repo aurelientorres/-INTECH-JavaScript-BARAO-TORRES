@@ -4,14 +4,22 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="demineur.js"></script>
     </head>
-    <body>
+    <body oncontextmenu="return false;">
+
+        <h1 id="time">0</h1>
+    
         <button id="startButton">Démarrer</button>
+        <select id="difficulty">
+            <option value="easy">Facile</option>
+            <option value="medium">Moyen</option>
+            <option value="hard">Difficile</option>
+        </select>
         <div id="message"></div>
        <div id="grid"></div>
        <script>
            button = document.getElementById("startButton")
            button.addEventListener("click", function(){
-               createGrid(15, "grid")
+               createGrid("grid")
            });
        </script>
     </body>

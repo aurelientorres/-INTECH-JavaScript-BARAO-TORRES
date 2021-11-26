@@ -1,9 +1,11 @@
 
-let cells =  []
+let cells =  [];
+let playing = false;
 
 function createGrid(size, gridId){
 
-    
+    playing = true
+
     grid = document.getElementById(gridId)
 
     let table = document.createElement('table');
@@ -24,7 +26,8 @@ function createGrid(size, gridId){
             tr.appendChild(td);
 
             td.addEventListener("click", function() {
-                checkCell(j, i, size)
+                if(playing == true)
+                    checkCell(j, i, size)
             });
 
             
@@ -41,7 +44,7 @@ function createGrid(size, gridId){
 
 
         cells[randomX][randomY].bomb = true;
-        cells[randomX][randomY].element.innerHTML = "B"
+        
     }
 
     calculateBomb(size)
@@ -58,7 +61,6 @@ function calculateBomb(size){
             for(around of aroundCells){
                 if(around.bomb == true){
                     cell.adjacentsBomb++
-                   // cell.element.innerHTML = cell.adjacentsBomb
                 }
             }
         }
@@ -69,11 +71,11 @@ function checkCell(x, y, size){
     
    let cell = cells[y][x] ;
 
-   let listCells = []
-
    if(cell.bomb == true){
-       alert('perdu')
+       cell.element.innerHTML = "B"
+       playing = false;
 
+       return;
    }
    
    let adjacentsCells = getCellsAround(x,y, size)

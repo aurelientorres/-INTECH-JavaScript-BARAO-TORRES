@@ -5,9 +5,14 @@
         <script src="demineur.js"></script>
     </head>
     <body>
+        <button id="startButton">Démarrer</button>
+        <div id="message"></div>
        <div id="grid"></div>
        <script>
-           createGrid(15, "grid");
+           button = document.getElementById("startButton")
+           button.addEventListener("click", function(){
+               createGrid(15, "grid")
+           });
        </script>
     </body>
 </html>

@@ -57,7 +57,7 @@ function createGrid(gridId){
 
                     if(cell.discovered == false) {
                         if(cell.flag == false){
-                            cells[i][j].element.innerHTML ="F"
+                            cells[i][j].element.innerHTML ="🚩"
                             cells[i][j].flag = true
                         }
                         else{
@@ -109,16 +109,20 @@ function checkCell(x, y, size){
 
    if(firstClick){
         firstClick = false;
+        counter = 0;
         startTimer()
    }
     
    let cell = cells[y][x] ;
 
    if(cell.bomb == true){
-       cell.element.innerHTML = "B"
+       cell.element.innerHTML = "💣"
+       cell.element.style.backgroundColor = "red"
        playing = false;
 
        showBombs(size);
+       clearInterval(time)
+       firstClick = true;
 
        return;
    }
@@ -175,18 +179,19 @@ function showBombs(size){
             aroundCells = getCellsAround(j, i, size)
             let cell = cells[i][j] ;
             if(cell.bomb == true){
-                cell.element.innerHTML = "B"
+                cell.element.innerHTML = "💣"
             }
         }
     }
 
 }
 
+let time = "";
+let counter = 0;
+
 
 function startTimer() {
-    let counter = 0;
-
-    setInterval(() => {
+    time = setInterval(() => {
         let timer = document.getElementById("time")
         counter++;
         timer.innerHTML = counter.toString();

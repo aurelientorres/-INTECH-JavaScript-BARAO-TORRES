@@ -2,8 +2,19 @@ table {
     border-collapse: collapse;
   }
 
-  tr, td {
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
-  }
+tr, td {
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+}
+
+body {
+  width: 50%;
+  margin: auto;
+  background-color: hotpink;
+}
+
+.title {
+  font-size: 30px;
+  text-align: center;
+}
